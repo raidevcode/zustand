@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
 import { useCountStore } from '../store/useCountStore'
-import { Button } from './__shared/button'
+import Button from './button'
 
-const decrement5 = () =>
-  useCountStore.setState(({ count }) => ({ count: count - 5 }))
+const inc5 = () => useCountStore.setState(state => ({ count: state.count + 5 }))
+
+const dec5 = () => useCountStore.setState(state => ({ count: state.count - 5 }))
 
 const logCount = () => console.log(useCountStore.getState().count)
 
-export const Count = () => {
-  const { count, increment, decrement, reset } = useCountStore(store => store)
+export default function Count() {
+  const { count, inc, dec, reset } = useCountStore()
 
   useEffect(() => logCount(), [])
 
@@ -20,31 +21,38 @@ export const Count = () => {
       <div className="flex items-center gap-x-2">
         <Button
           width={80}
+          title="+ 5"
+          color="#fff"
+          backgroundColor="#09f"
+          onClick={inc5}
+        />
+        <Button
+          width={80}
           title="+"
           color="#fff"
           backgroundColor="#09f"
-          onPress={increment}
+          onClick={inc}
         />
         <Button
           width={80}
           title="0"
           color="#fff"
           backgroundColor="#09f"
-          onPress={reset}
+          onClick={reset}
         />
         <Button
           width={80}
           title="-"
           color="#fff"
           backgroundColor="#09f"
-          onPress={decrement}
+          onClick={dec}
         />
         <Button
           width={80}
           title="- 5"
           color="#fff"
           backgroundColor="#09f"
-          onPress={decrement5}
+          onClick={dec5}
         />
       </div>
     </div>

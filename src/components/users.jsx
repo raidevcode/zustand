@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useUsersStore } from '../store/useUsersStore'
 
-export const Users = () => {
-  const { users, isPending, isError, getData } = useUsersStore(store => store)
+export default function Users() {
+  const { users, isPending, isError, getData } = useUsersStore()
 
-  useEffect(() => getData(), [])
+  useEffect(() => getData(), [getData])
 
   return (
-    <ul className="w-[250px] flex flex-col items-center text-white gap-y-2">
+    <ul className="w-62.5 flex flex-col items-center text-white gap-y-2">
       <span className="block w-full text-center rounded-[5px] py-1 mb-2 bg-[#09f]">
         Usuarios ⭐
       </span>

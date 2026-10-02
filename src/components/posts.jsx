@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 import { usePostsStore } from '../store/usePostsStore'
 
-export const Posts = () => {
-  const { posts, isPending, isError, getData } = usePostsStore(store => store)
+export default function Posts() {
+  const { posts, isPending, isError, getData } = usePostsStore()
 
-  useEffect(() => getData(), [])
+  useEffect(() => getData(), [getData])
 
   return (
-    <div className="bg-slate-800 w-[1024px] min-h-[400px] flex flex-col items-center text-white p-2 gap-y-2">
-      <span className="block w-full max-w-[250px] text-center rounded-[5px] py-1 mb-2 bg-[#09f]">
+    <div className="bg-slate-800 w-5xl min-h-100 flex flex-col items-center text-white p-2 gap-y-2">
+      <span className="block w-full max-w-62.5 text-center rounded-[5px] py-1 mb-2 bg-[#09f]">
         Posts ⭐
       </span>
       {isPending ? (
